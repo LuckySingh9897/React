@@ -1,5 +1,7 @@
 import React, {useState} from 'react'
 
+
+
 export default function Textform(props) {
     
      const handleupClick=()=>{
@@ -10,7 +12,8 @@ export default function Textform(props) {
        
         console.log(s);
         setText(s);
-        
+        props.SomeAlert("Converted To Upper Case","success");
+      
      }
      const handlelowerClick=()=>{
         console.log(text);
@@ -20,6 +23,8 @@ export default function Textform(props) {
        
         console.log(s);
         setText(s);
+      props.SomeAlert("Converted To Lower Case","success");
+
         
      }
      const handleClearClick=()=>{
@@ -30,6 +35,8 @@ export default function Textform(props) {
        
         console.log(s);
         setText(s);
+       
+        props.SomeAlert("Clear the text area","success");
         
      }
      const handleCorrectClick=()=>{
@@ -39,31 +46,37 @@ export default function Textform(props) {
             s[i]=s[i].charAt(0).toUpperCase()+ s[i].slice(1).toLowerCase();
         }
         setText(s.join(" "));
+        props.SomeAlert("Converted To Correct Case","success");
         
         
      }
      const handleToggleClick=()=>{
 
-        let s= text.split(/[ ]+/);
-        
-        for(let i=0;i<s.length;i++){
-            for(let j=0;j<s[i].length;j++){
-                {
-                    if (s[i][j] >= 'A' && s[i][j] <= 'Z')
-                        s[i][j] =  String.fromCharCode(s[i][j].charCodeAt(0) + 'a'.charCodeAt(0) - 'A'.charCodeAt(0));
-                    else if (s[i][j] >= 'a' && s[i][j] <= 'z')
-                        s[i][j] =  String.fromCharCode(s[i][j].charCodeAt(0) + 'A'.charCodeAt(0) - 'a'.charCodeAt(0));
-                }
-            }
+           
+        let result = "";
+for (let i = 0; i < text.length; i++) {
+  let char = text.charAt(i);
+  
+    if (char >= "A" && char <= "Z") {
+ 
+    char = char.toLowerCase();
+  }
+  else if (char >= "a" && char <= "z") {
+ 
+    char = char.toUpperCase();
+  }
 
-        }
-        setText(s.join(" "));
+  result += char;
+}
+      
+        setText(result);
         
-        
+        props.SomeAlert("Toggle the Case","success");
      }
 
      const handonChange=(event)=>{
         console.log("Changed");
+      
         setText(event.target.value);
      }
     const [text,setText]=useState("");
@@ -87,7 +100,7 @@ export default function Textform(props) {
     <div className='container my-3' style={{color:props.mode==='light'?'black':'white'}}>
         <h2>Your Text Summary</h2>
       
-        <p>{text.length} characters and {text.split(" ").length} words</p>
+        <p>{text.length} characters and {`${text.length===0?0:text.replace(/\s+/g, ' ').trim().split(" ").length}`} words</p>
         <h3>
             Preview
         </h3>
