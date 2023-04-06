@@ -91,11 +91,11 @@ for (let i = 0; i < text.length; i++) {
 
     <textarea className="form-control" style ={{backgroundColor:props.mode==='light'?'white':'grey',color:props.mode==='light'?'black':'white' }} id="exampleFormControlTextarea1" rows="8" value={text} onChange={handonChange}></textarea>
   </div>
-  <button className="btn btn-primary" type="submit" onClick={handleupClick}>Convert to Uppercase</button>
-  <button className="btn btn-primary mx-3" type="submit" onClick={handlelowerClick}>Convert to Lowercase</button>
-  <button className="btn btn-primary mx-3" type="submit" onClick={handleCorrectClick}>Correct Case</button>
-  <button className="btn btn-primary mx-3" type="submit" onClick={handleClearClick}>Clear</button>
-  <button className="btn btn-primary mx-3" type="submit" onClick={handleToggleClick}>Toggle</button>
+  <button className="btn btn-primary mx-1 my-1" type="submit" onClick={handleupClick}>Convert to Uppercase</button>
+  <button className="btn btn-primary mx-1 my-1" type="submit" onClick={handlelowerClick}>Convert to Lowercase</button>
+  <button className="btn btn-primary mx-1 my-1" type="submit" onClick={handleCorrectClick}>Correct Case</button>
+  <button className="btn btn-primary mx-1 my-1" type="submit" onClick={handleClearClick}>Clear</button>
+  <button className="btn btn-primary mx-1 my-1" type="submit" onClick={handleToggleClick}>Toggle</button>
     </div>
     <div className='container my-3' style={{color:props.mode==='light'?'black':'white'}}>
         <h2>Your Text Summary</h2>
